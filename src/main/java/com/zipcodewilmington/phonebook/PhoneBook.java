@@ -19,10 +19,12 @@ public class PhoneBook {
     }
 
     public PhoneBook() {
-         phonebook = new TreeMap<String, List<String>>();
-
+         phonebook = new LinkedHashMap<String, List<String>>();
+        // changed from normal hashmap to linked and now get all contact names
+        // comes out same order it went in
 
     }
+
 
     public void add(String name, String phoneNumber) {
 //        if (!phonebook.containsKey(name)) return;
@@ -79,10 +81,15 @@ public class PhoneBook {
     }
 
     public List<String> getAllContactNames() {
-        return null;
+      ArrayList<String> phonebookNames = new ArrayList<>();
+//        phonebookNames.add(phonebook.keySet().toString());
+//        return phonebookNames;
+        for(String name : phonebook.keySet())
+            phonebookNames.add(name);
+        return phonebookNames;
     }
 
     public Map<String, List<String>> getMap() {
-        return null;
+        return phonebook;
     }
 }
