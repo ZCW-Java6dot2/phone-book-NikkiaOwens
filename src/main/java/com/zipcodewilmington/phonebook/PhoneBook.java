@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class PhoneBook {
 
-    private final Map<String, List<String>> phonebook;
+     Map<String, List<String>> phonebook;
 
 
 
@@ -19,25 +19,30 @@ public class PhoneBook {
     }
 
     public PhoneBook() {
-       phonebook = new HashMap<String, List<String>>();
+         phonebook = new TreeMap<String, List<String>>();
 
 
     }
 
     public void add(String name, String phoneNumber) {
-        if (!phonebook.containsKey(name)) return;
-        List<String> numbers = phonebook.get(name);
-        if(numbers == null) {
-             numbers = Arrays.asList(phoneNumber);
-        }
-        //TOXIC
-        numbers.add(phoneNumber);
-        phonebook.put(name, numbers);
+//        if (!phonebook.containsKey(name)) return;
+//        List<String> numbers = phonebook.get(name);
+//        if(numbers == null) {
+//             numbers = Arrays.asList(phoneNumber);
+//        }
+//        //TOXIC
+//        numbers.add(phoneNumber);
+//        phonebook.put(name, numbers);
+        List<String> phoneNum = new ArrayList<>();
+        phoneNum.add(phoneNumber);
+        phonebook.put(name, phoneNum);
 
     }
     public void addAll(String name, String... phoneNumbers) {
-        for(String str: phoneNumbers) {
-            add(name, str);
+          List<String> phoneNum = new ArrayList<>();
+        phoneNum = Arrays.asList(phoneNumbers);
+        if(!phonebook.containsKey(name)){
+            phonebook.put(name, phoneNum);
         }
     }
 
